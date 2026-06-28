@@ -152,7 +152,7 @@ class BillingControllerTest extends TestCase
 
         // Setup the data for the usage charge and the signature for it
         $secret = $this->app['config']->get('shopify-app.api_secret');
-        $data = ['description' => 'One email', 'price' => 1.00, 'redirect' => 'https://localhost/usage-success'];
+        $data = ['description' => 'One email', 'price' => 1.00, 'currency' => 'USD', 'redirect' => 'https://localhost/usage-success'];
         $signature = Util::createHmac(['data' => $data, 'buildQuery' => true], $secret);
 
         // Run the call
@@ -165,7 +165,7 @@ class BillingControllerTest extends TestCase
         $response->assertSessionHas('success');
 
         // Run again with no redirect
-        $data = ['description' => 'One email', 'price' => 1.00];
+        $data = ['description' => 'One email', 'price' => 1.00, 'currency' => 'USD'];
         $signature = Util::createHmac(['data' => $data, 'buildQuery' => true], $secret);
 
         // Run the call
@@ -223,7 +223,7 @@ class BillingControllerTest extends TestCase
 
         // Set up the data for the usage charge and the signature for it
         $secret = $this->app['config']->get('shopify-app.api_secret');
-        $data = ['description' => 'One email', 'price' => 1.00, 'redirect' => 'https://localhost/usage-success'];
+        $data = ['description' => 'One email', 'price' => 1.00, 'currency' => 'USD', 'redirect' => 'https://localhost/usage-success'];
         $signature = Util::createHmac(['data' => $data, 'buildQuery' => true], $secret);
 
         // Run the call
@@ -267,6 +267,7 @@ class BillingControllerTest extends TestCase
         $data = [
             'description' => 'One email',
             'price' => 1.00,
+            'currency' => 'USD',
             'redirect' => 'https://localhost/usage-success',
         ];
         $signature = Util::createHmac(['data' => $data, 'buildQuery' => true], $secret);

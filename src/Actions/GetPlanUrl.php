@@ -39,7 +39,7 @@ class GetPlanUrl
                     $this->chargeHelper->details($plan, $shop, $host)
                 );
 
-            $confirmationUrl = $api['confirmation_url'];
+            $confirmationUrl = $api['confirmation_url'] ?? $api['confirmationUrl']; // Handle GraphQL vs REST response --- IGNORE ---
         }
 
         return $confirmationUrl;

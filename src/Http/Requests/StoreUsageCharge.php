@@ -36,6 +36,7 @@ class StoreUsageCharge extends FormRequest
             // Get the input values needed
             $data = [
                 'price' => $this->request->get('price'),
+                'currency' => $this->request->get('currency'),
                 'description' => $this->request->get('description'),
                 'signature' => $this->request->get('signature'),
             ];
@@ -71,6 +72,7 @@ class StoreUsageCharge extends FormRequest
         return [
             'signature' => 'required|string',
             'price' => 'required|numeric',
+            'currency' => 'required|string',
             'description' => 'required|string',
             'redirect' => 'nullable|string',
         ];
