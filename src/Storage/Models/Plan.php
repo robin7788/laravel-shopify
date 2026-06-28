@@ -85,7 +85,7 @@ class Plan extends Model
      */
     public function getCurrency(): PlanCurrencyCode
     {
-        return $this->currency ? PlanCurrencyCode::{Str::upper($this->currency)} : PlanCurrencyCode::USD;
+        return $this->currency ? (PlanCurrencyCode::tryFrom(Str::upper($this->currency)) ?? PlanCurrencyCode::USD) : PlanCurrencyCode::USD;
     }
 
     /**

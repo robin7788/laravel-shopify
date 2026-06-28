@@ -47,7 +47,7 @@ class ActivateUsageChargeTest extends TestCase
         // Create the transfer
         $ucd = new UsageChargeDetails();
         $ucd->price = 12.00;
-        $ucd->currency = PlanCurrencyCode::USD;
+        $ucd->currency = PlanCurrencyCode::USD->value;
         $ucd->description = 'Hello!';
 
         // Setup API stub
@@ -89,7 +89,7 @@ class ActivateUsageChargeTest extends TestCase
         // Create the transfer
         $ucd = new UsageChargeDetails();
         $ucd->price = 12.00;
-        $ucd->currency = PlanCurrencyCode::USD;
+        $ucd->currency = PlanCurrencyCode::USD->value;
         $ucd->description = 'Hello!';
 
         call_user_func(
@@ -119,7 +119,7 @@ class ActivateUsageChargeTest extends TestCase
         // Create the transfer
         $ucd = new UsageChargeDetails();
         $ucd->price = 12.00;
-        $ucd->currency = PlanCurrencyCode::USD;
+        $ucd->currency = PlanCurrencyCode::USD->value;
         $ucd->description = 'Hello!';
 
         // Setup API stub

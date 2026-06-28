@@ -2,10 +2,6 @@
 
 namespace Osiset\ShopifyApp\Objects\Enums;
 
-use Funeralzone\ValueObjects\Scalars\StringTrait;
-use Funeralzone\ValueObjects\ValueObject;
-use Override;
-
 enum PlanCurrencyCode: string
 {
     /**
@@ -28,25 +24,25 @@ enum PlanCurrencyCode: string
      * @var string
      */
     case EUR = 'EUR';
-    
+
     /**
-    * Currency: Canadian Dollar.
-    *
-    * @var string
-    */
+     * Currency: Canadian Dollar.
+     *
+     * @var string
+     */
     case CAD = 'CAD';
 
     /**
-    * Currency: Australian Dollar.
-    *
-    * @var string
-    */
+     * Currency: Australian Dollar.
+     *
+     * @var string
+     */
     case AUD = 'AUD';
 
     /**
-    * Currency: Japanese Yen.
-    *
-    * @var string
-    */
+     * Currency: Japanese Yen.
+     *
+     * @var string
+     */
     case JPY = 'JPY';
 }

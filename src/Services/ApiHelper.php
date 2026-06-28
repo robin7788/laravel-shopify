@@ -347,14 +347,12 @@ class ApiHelper implements IApiHelper
 
     /**
      * {@inheritdoc}
-     * TODO: Convert to GraphQL (merge createChargeGraphQL).
      */
     public function createCharge(ChargeType $chargeType, PlanDetailsTransfer $payload): ResponseAccess
     {
         if ($chargeType->isSame(ChargeType::RECURRING())) {
             return $this->createChargeGraphQL($payload);
-        }
-        elseif ($chargeType->isSame(ChargeType::CHARGE())) {
+        } elseif ($chargeType->isSame(ChargeType::CHARGE())) {
             return $this->createOneTimeChargeGraphQL($payload);
         }
         // API path
@@ -372,7 +370,8 @@ class ApiHelper implements IApiHelper
 
     /**
      * {@inheritdoc}
-     *
+     * TODO: Convert to GraphQL (merge createChargeGraphQL).
+     * 
      * @throws Exception
      */
     public function createChargeGraphQL(PlanDetailsTransfer $payload): ResponseAccess
@@ -414,7 +413,7 @@ class ApiHelper implements IApiHelper
                         'appRecurringPricingDetails' => [
                             'price' => [
                                 'amount' => $payload->price,
-                                'currencyCode' => $payload->currency ?? PlanCurrencyCode::USD,
+                                'currencyCode' => $payload->currency ?? PlanCurrencyCode::USD->value,
                             ],
                             'interval' => $payload->interval,
                         ],
@@ -466,7 +465,7 @@ class ApiHelper implements IApiHelper
             'test' => $payload->test,
             'price' => [
                 'amount' => $payload->price,
-                'currencyCode' => $payload->currency ?? PlanCurrencyCode::USD,
+                'currencyCode' => $payload->currency ?? PlanCurrencyCode::USD->value,
             ],
         ];
 
@@ -594,7 +593,7 @@ class ApiHelper implements IApiHelper
             [
                 'usage_charge' => [
                     'price' => $payload->price,
-                    'currency' => $payload->currency ?? PlanCurrencyCode::USD,
+                    'currency' => $payload->currency ?? PlanCurrencyCode::USD->value,
                     'description' => $payload->description,
                 ],
             ]

@@ -151,7 +151,7 @@ trait BillingController
         // Create the transfer object
         $ucd = new UsageChargeDetailsTransfer();
         $ucd->price = $validated['price'];
-        $ucd->currency = $validated['currency'] ?? PlanCurrencyCode::USD;
+        $ucd->currency = $validated['currency'] ?? PlanCurrencyCode::USD->value;
         $ucd->description = $validated['description'];
 
         // Activate and save the usage charge
