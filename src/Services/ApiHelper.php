@@ -347,14 +347,10 @@ class ApiHelper implements IApiHelper
 
     /**
      * {@inheritdoc}
+     * TODO: Convert to GraphQL (merge createChargeGraphQL).
      */
     public function createCharge(ChargeType $chargeType, PlanDetailsTransfer $payload): ResponseAccess
     {
-        if ($chargeType->isSame(ChargeType::RECURRING())) {
-            return $this->createChargeGraphQL($payload);
-        } elseif ($chargeType->isSame(ChargeType::CHARGE())) {
-            return $this->createOneTimeChargeGraphQL($payload);
-        }
         // API path
         $typeString = $this->chargeApiPath($chargeType);
 
@@ -370,7 +366,6 @@ class ApiHelper implements IApiHelper
 
     /**
      * {@inheritdoc}
-     * TODO: Convert to GraphQL (merge createChargeGraphQL).
      * 
      * @throws Exception
      */

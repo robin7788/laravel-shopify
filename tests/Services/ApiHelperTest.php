@@ -160,7 +160,7 @@ class ApiHelperTest extends TestCase
 
         // Response stubbing
         $this->setApiStub();
-        ApiStub::stubResponses(['graphql_app_subscription_create']);
+        ApiStub::stubResponses(['post_recurring_application_charges']);
 
         // Build the details object
         $transfer = new PlanDetailsTransfer();
@@ -176,7 +176,7 @@ class ApiHelperTest extends TestCase
             $transfer
         );
         $this->assertInstanceOf(ResponseAccess::class, $data);
-        $this->assertNotEmpty($data['confirmationUrl']);
+        $this->assertSame('Basic Plan', $data['name']);
     }
 
     public function testGetWebhooks(): void
