@@ -77,6 +77,3 @@ fabric.properties
 /.idea/codeception.xml
 /.idea/phpspec.xml
 
-
-old-code/*
-
